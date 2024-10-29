@@ -5,16 +5,16 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:muhtasham/screens/otp_screen.dart';
 import 'package:muhtasham/utils/colors.dart';
 
-class EnterScreen extends StatefulWidget {
-  const EnterScreen({super.key});
+class PhoneScreen extends StatefulWidget {
+  const PhoneScreen({super.key});
 
   @override
-  State<EnterScreen> createState() => _EnterScreenState();
+  State<PhoneScreen> createState() => _PhoneScreenState();
 }
 
 TextEditingController phoneController = TextEditingController();
 
-class _EnterScreenState extends State<EnterScreen> {
+class _PhoneScreenState extends State<PhoneScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -181,7 +181,7 @@ class _EnterScreenState extends State<EnterScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const OtpScreen(),
+                        builder: (context) =>  OtpScreen(phone_number: phoneController,),
                       ),
                     );
                   },

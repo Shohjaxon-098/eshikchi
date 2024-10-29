@@ -1,10 +1,12 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:muhtasham/screens/home_screen.dart';
+import 'package:muhtasham/screens/start_screen.dart';
+import 'package:muhtasham/screens/phone_screen.dart';
 import 'package:muhtasham/utils/colors.dart';
 
 // class Otp extends StatelessWidget {
@@ -40,9 +42,11 @@ import 'package:muhtasham/utils/colors.dart';
 //   }
 // }
 
+// ignore: must_be_immutable
 class OtpScreen extends StatefulWidget {
-  const OtpScreen({super.key});
-
+  // ignore: non_constant_identifier_names
+  OtpScreen({super.key, required this.phone_number});
+  TextEditingController phone_number = TextEditingController();
   @override
   State<OtpScreen> createState() => _OtpScreenState();
 }
@@ -54,10 +58,12 @@ class _OtpScreenState extends State<OtpScreen> {
   Timer? _timer;
   int _start = 60; // Countdown from 60 seconds
   bool _isRunning = false;
+
+  late List<Color> textColors; // List to store the color of each TextField
   void startTimer() {
     if (_isRunning) return; // Prevent starting a new timer if one is running
     _isRunning = true;
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (_start > 0) {
         setState(() {
           _start--;
@@ -72,11 +78,14 @@ class _OtpScreenState extends State<OtpScreen> {
     });
   }
 
+
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     startTimer();
+    textColors = List.filled(6, Colors.black);
   }
 
   @override
@@ -90,7 +99,9 @@ class _OtpScreenState extends State<OtpScreen> {
       FocusScope.of(context).nextFocus(); // Move to the next field
     } else if (value.length == 1 && index == _controllers.length - 1) {
       FocusScope.of(context).unfocus(); // Close the keyboard
-      _navigateToNextPage(); // Navigate to the next page
+      _navigateToNextPage(); // Navigate to the next page.
+    } else {
+      FocusScope.of(context).previousFocus();
     }
   }
 
@@ -98,10 +109,20 @@ class _OtpScreenState extends State<OtpScreen> {
     // Get the entered OTP
     String otp = _controllers.map((controller) => controller.text).join();
     // You can use the OTP for validation or send it to the next page.
-    Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (context) => HomeScreen()));
+    setState(() {
+      if (otp == _correctOtp) {
+        textColors = List.filled(6, Colors.black);
+      } else {
+        textColors = List.filled(6, Colors.red);
+      }
+    });
+    otp == _correctOtp
+        ? Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => const StartScreen()))
+        : const AlertDialog();
   }
 
+  final String _correctOtp = "111111";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -159,7 +180,7 @@ class _OtpScreenState extends State<OtpScreen> {
                     textAlign: TextAlign.center,
                   ),
                   Text(
-                    "Kod +998 91 222 22 32 raqamiga yuborilgan",
+                    "Kod +998 ${phoneController.text} raqamiga yuborilgan",
                     style: GoogleFonts.onest(
                       fontSize: 16,
                       fontWeight: FontWeight.w400,
@@ -177,6 +198,7 @@ class _OtpScreenState extends State<OtpScreen> {
                   width: 45,
                   child: TextField(
                     style: GoogleFonts.onest(
+                      color: textColors[index],
                       fontSize: 30,
                       fontWeight: FontWeight.w600,
                     ),
@@ -184,7 +206,7 @@ class _OtpScreenState extends State<OtpScreen> {
                     keyboardType: TextInputType.number,
                     textAlign: TextAlign.center,
                     maxLength: 1, // Limit to one character
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(
                         borderSide: BorderSide.none,
                       ),
@@ -200,7 +222,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 );
               }),
             ),
-            Spacer(),
+            const Spacer(),
             Text(
               _isRunning
                   ? "Agar kod yuborilmasa, yangi kodni\n $_start soniyadan so’ng so’rash mumkin"

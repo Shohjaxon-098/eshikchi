@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:muhtasham/screens/enter_screen.dart';
+import 'package:muhtasham/screens/phone_screen.dart';
 import 'package:muhtasham/utils/colors.dart';
 
 class LanguageScreen extends StatefulWidget {
@@ -75,7 +75,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => EnterScreen(),
+                            builder: (context) => const PhoneScreen(),
                           ),
                         );
                       },
@@ -118,7 +118,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => EnterScreen(),
+                                builder: (context) => PhoneScreen(),
                               ),
                             );
                           },
@@ -155,7 +155,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => EnterScreen(),
+                            builder: (context) => PhoneScreen(),
                           ),
                         );
                       },
