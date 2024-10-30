@@ -42,74 +42,88 @@ class ShowBuyurtma extends StatelessWidget {
           children: [
             Expanded(
               flex: 2,
-              child: Container(
-                  width: double.infinity,
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [
-                          Color(0xff0063FF),
-                          Color(0xff004FCD),
-                        ]),
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(48),
-                      bottomRight: Radius.circular(48),
+              child: Stack(
+                alignment: Alignment(-0.97, -0.7),
+                children: [
+                  Container(
+                      width: double.infinity,
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [
+                              Color(0xff0063FF),
+                              Color(0xff004FCD),
+                            ]),
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(48),
+                          bottomRight: Radius.circular(48),
+                        ),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 56,
+                            height: 56,
+                            decoration: BoxDecoration(
+                              border: const Border(),
+                              color: const Color(0xffF5FAFF),
+                              borderRadius: BorderRadius.circular(40),
+                            ),
+                            child: SvgPicture.asset(
+                              "assets/images/shopping1.svg",
+                              fit: BoxFit.none,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 16, bottom: 12),
+                            child: Text(
+                              "“XOVANDAMIR HOLDING” MCHJ",
+                              style: GoogleFonts.onest(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16,
+                                  color: white),
+                            ),
+                          ),
+                          Text(
+                            "BU-00023 buyurtmaning umumiy summasi",
+                            style: GoogleFonts.onest(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 16,
+                                color: const Color(0xffE6EFFF)),
+                          ),
+                          const SizedBox(
+                            height: 4,
+                          ),
+                          Text(
+                            "81 612 000 UZS",
+                            style: GoogleFonts.onest(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 30,
+                                color: const Color(0xffF6FEF9)),
+                          ),
+                          Text(
+                            "10.01.2024 10:00",
+                            style: GoogleFonts.onest(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 16,
+                                color: const Color(0xffF6FEF9)),
+                          ),
+                        ],
+                      )),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(
+                      Icons.arrow_back_ios_new_rounded,
+                      color: white,
                     ),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        width: 56,
-                        height: 56,
-                        decoration: BoxDecoration(
-                          border: const Border(),
-                          color: const Color(0xffF5FAFF),
-                          borderRadius: BorderRadius.circular(40),
-                        ),
-                        child: SvgPicture.asset(
-                          "assets/images/shopping1.svg",
-                          fit: BoxFit.none,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 16, bottom: 12),
-                        child: Text(
-                          "“XOVANDAMIR HOLDING” MCHJ",
-                          style: GoogleFonts.onest(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16,
-                              color: white),
-                        ),
-                      ),
-                      Text(
-                        "BU-00023 buyurtmaning umumiy summasi",
-                        style: GoogleFonts.onest(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 16,
-                            color: const Color(0xffE6EFFF)),
-                      ),
-                      const SizedBox(
-                        height: 4,
-                      ),
-                      Text(
-                        "81 612 000 UZS",
-                        style: GoogleFonts.onest(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 30,
-                            color: const Color(0xffF6FEF9)),
-                      ),
-                      Text(
-                        "10.01.2024 10:00",
-                        style: GoogleFonts.onest(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 16,
-                            color: const Color(0xffF6FEF9)),
-                      ),
-                    ],
-                  )),
+                  )
+                ],
+              ),
             ),
             Expanded(
               flex: 4,
@@ -219,7 +233,8 @@ class ShowBuyurtma extends StatelessWidget {
                                 Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const SuccsessBuyurtma(),
+                                    builder: (context) =>
+                                        const SuccsessBuyurtma(),
                                   ),
                                 );
                                 // Handle button action

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:muhtasham/pages/home/buyurtmalar_page.dart';
+import 'package:muhtasham/pages/home/hisob_page.dart';
 import 'package:muhtasham/pages/home/so%60rovlar_page.dart';
 import 'package:muhtasham/utils/colors.dart';
 
@@ -32,10 +33,7 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _pages = [
     const SorovlarPage(),
     const BuyurtmalarPage(),
-    Text(
-      'Hisob-kitob',
-      style: GoogleFonts.onest(fontSize: 16, fontWeight: FontWeight.w600),
-    ),
+    const HisobPage(),
   ];
 
   void _onTabTapped(int index) {
@@ -64,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                 child: GestureDetector(
                   onTap: () {
                     Navigator.pop(context);
-                    showBottomSheet(
+                    showModalBottomSheet(
                       backgroundColor: white,
                       shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
@@ -75,9 +73,9 @@ class _HomePageState extends State<HomePage> {
                       context: context,
                       builder: (context) {
                         return Container(
+                          height: MediaQuery.of(context).size.width / 1.5,
                           margin: const EdgeInsets.symmetric(
                               vertical: 16, horizontal: 12),
-                          height: 292,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -103,7 +101,7 @@ class _HomePageState extends State<HomePage> {
                                       horizontal: 20, vertical: 14),
                                   decoration: BoxDecoration(
                                       border: Border.all(
-                                        color: _currentIndex == 1
+                                        color: _selectedValue == 0
                                             ? const Color(0xffE5E7EB)
                                             : const Color(0xff0063FF),
                                       ),
@@ -158,7 +156,7 @@ class _HomePageState extends State<HomePage> {
                                       horizontal: 20, vertical: 14),
                                   decoration: BoxDecoration(
                                       border: Border.all(
-                                        color: _currentIndex == 1
+                                        color: _selectedValue == 1
                                             ? const Color(0xffE5E7EB)
                                             : const Color(0xff0063FF),
                                       ),
@@ -198,8 +196,8 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 16, vertical: 16),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 16),
                                 child: SizedBox(
                                   width: double.infinity,
                                   child: ElevatedButton(
@@ -287,11 +285,7 @@ class _HomePageState extends State<HomePage> {
             "assets/images/settings.svg",
             fit: BoxFit.none,
           ),
-          onSelected: (value) {
-            setState(() {
-              if (value == 'til') {}
-            });
-          },
+          onSelected: (value) {},
         ),
         elevation: 0,
         title: _titles[_currentIndex],
