@@ -1,9 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:muhtasham/screens/otp_screen.dart';
-import 'package:muhtasham/utils/colors.dart';
+import 'package:muhtasham/utils/important.dart';
 
 class PhoneScreen extends StatefulWidget {
   const PhoneScreen({super.key});
@@ -15,6 +10,7 @@ class PhoneScreen extends StatefulWidget {
 TextEditingController phoneController = TextEditingController();
 
 class _PhoneScreenState extends State<PhoneScreen> {
+  bool isEmpty = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +27,7 @@ class _PhoneScreenState extends State<PhoneScreen> {
                 top: 14,
               ),
               child: SvgPicture.asset(
-                height: 38,
+                height: 40,
                 "assets/images/logoBig_eshikchi.svg",
               ),
             ),
@@ -107,6 +103,16 @@ class _PhoneScreenState extends State<PhoneScreen> {
                   ),
                   Expanded(
                     child: TextField(
+                      onChanged: (value) {
+                        setState(() {
+                          phoneController.text = value;
+                          if (value.isNotEmpty) {
+                            isEmpty = true;
+                          } else {
+                            isEmpty = false;
+                          }
+                        });
+                      },
                       controller: phoneController,
                       style: GoogleFonts.onest(
                         fontWeight: FontWeight.w600,
@@ -178,12 +184,25 @@ class _PhoneScreenState extends State<PhoneScreen> {
                 height: 60,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>  OtpScreen(phone_number: phoneController,),
-                      ),
-                    );
+                    isEmpty
+                        ? Navigator.push(
+                            context,
+                            PageTransition(
+                                duration: const Duration(milliseconds: 300),
+                                type: PageTransitionType.rightToLeftWithFade,
+                                child: OtpScreen(
+                                  phone_number: phoneController,
+                                )))
+                        : ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              duration: Duration(milliseconds: 1300),
+                              content: Text(
+                                "Telefon raqamingizni kiriting!",
+                                style: GoogleFonts.onest(
+                                    fontSize: 16, fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                          );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: blue,

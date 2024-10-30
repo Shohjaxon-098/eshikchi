@@ -1,9 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:muhtasham/pages/views/show_buyurtma.dart';
 
-import '../../utils/colors.dart';
+
+import 'package:muhtasham/utils/important.dart';
 
 class BuyurtmalarPage extends StatefulWidget {
   const BuyurtmalarPage({super.key});
@@ -28,11 +25,11 @@ class _BuyurtmalarPageState extends State<BuyurtmalarPage> {
           return GestureDetector(
             onTap: () {
               Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const ShowBuyurtma(),
-                ),
-              );
+                  context,
+                  PageTransition(
+                      duration: Duration(milliseconds: 300),
+                      type: PageTransitionType.rightToLeftWithFade,
+                      child: ShowBuyurtma()));
             },
             child: Padding(
               padding:

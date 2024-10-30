@@ -1,9 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:muhtasham/pages/views/show_buyurtma.dart';
 
-import '../../utils/colors.dart';
+import 'package:muhtasham/utils/important.dart';
 
 class BuyurtmalarTarixi extends StatefulWidget {
   const BuyurtmalarTarixi({super.key});
@@ -22,13 +18,13 @@ class _BuyurtmalarTarixiState extends State<BuyurtmalarTarixi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffF9FAFB),
+      backgroundColor: const Color(0xffF9FAFB),
       appBar: AppBar(
         leading: GestureDetector(
           onTap: () {
             Navigator.pop(context);
           },
-          child: Icon(Icons.arrow_back_ios_new_rounded),
+          child: const Icon(Icons.arrow_back_ios_new_rounded),
         ),
         centerTitle: true,
         backgroundColor: white,
@@ -56,7 +52,7 @@ class _BuyurtmalarTarixiState extends State<BuyurtmalarTarixi> {
                 shape: RoundedRectangleBorder(
                   side: BorderSide(
                       color:
-                          index == 0 ? Color(0xffEAECF0) : Color(0xffA6F4C5)),
+                          index == 0 ? const Color(0xffEAECF0) : const Color(0xffA6F4C5)),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 elevation: 0,
@@ -67,12 +63,12 @@ class _BuyurtmalarTarixiState extends State<BuyurtmalarTarixi> {
                     decoration: BoxDecoration(
                         color: index == 0
                             ? const Color(0xffF5FAFF)
-                            : Color(0xffF6FEF9),
+                            : const Color(0xffF6FEF9),
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(
                             color: index == 0
                                 ? const Color(0xffD1E9FF)
-                                : Color(0xffD1FADF))),
+                                : const Color(0xffD1FADF))),
                     child: Center(
                         child: index == 0
                             ? SvgPicture.asset('assets/images/shopping1.svg')
@@ -88,7 +84,7 @@ class _BuyurtmalarTarixiState extends State<BuyurtmalarTarixi> {
                   subtitle: Row(
                     children: [
                       index == 0
-                          ? SizedBox()
+                          ? const SizedBox()
                           : Text(
                               "Yuklandi",
                               style: GoogleFonts.onest(

@@ -1,11 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:muhtasham/pages/views/succsess.dart';
-import 'package:muhtasham/utils/colors.dart';
-
 // ignore: use_key_in_widget_constructors
+
+import 'package:muhtasham/utils/important.dart';
+
 class DetailScreen extends StatefulWidget {
+  const DetailScreen({super.key});
+
   @override
   State<DetailScreen> createState() => _DetailScreenState();
 }
@@ -104,8 +103,8 @@ class _DetailScreenState extends State<DetailScreen> {
                           Row(
                             children: [
                               Expanded(
-                                flex: 3,
-                                child: Container(
+                                flex: 2,
+                                child: SizedBox(
                                   height: 44,
                                   child: TextField(
                                     keyboardType: TextInputType.number,
@@ -145,11 +144,13 @@ class _DetailScreenState extends State<DetailScreen> {
                               ),
                               const SizedBox(width: 8),
                               Expanded(
-                                flex: 1,
+                                flex: 0,
                                 child: Container(
                                   height: 44,
+                                  padding: const EdgeInsets.only(left: 16),
                                   decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey),
+                                    border: Border.all(
+                                        color: const Color(0xffEAECF0)),
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   child: Row(
@@ -177,6 +178,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                                 BorderRadius.circular(12),
                                           ),
                                           icon: SvgPicture.asset(
+                                              fit: BoxFit.cover,
                                               "assets/images/chevron-down.svg"),
                                           itemBuilder: (context) {
                                             return [

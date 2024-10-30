@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:muhtasham/pages/home/home_page.dart';
-import 'package:muhtasham/utils/colors.dart';
+import 'package:muhtasham/utils/important.dart';
 
 class StartScreen extends StatelessWidget {
   const StartScreen({super.key});
@@ -54,41 +51,38 @@ class StartScreen extends StatelessWidget {
             ),
           ),
           const Spacer(),
-          Container(
-            child: Stack(
-              alignment: const Alignment(0, 0.3),
-              children: [
-                SvgPicture.asset(
-                  'assets/images/Union.svg',
-                ),
-                SizedBox(
-                  width: 85.91,
-                  height: 85.91,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => HomePage(),
-                        ),
-                        (route) => false,
-                      );
-                    },
-                    child: SvgPicture.asset(
-                      "assets/images/arrow-right.svg",
-                      fit: BoxFit.none,
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(60),
+          Stack(
+            alignment: const Alignment(0, 0.3),
+            children: [
+              SvgPicture.asset(
+                'assets/images/Union.svg',
+              ),
+              SizedBox(
+                width: 84,
+                height: 84,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomePage(),
                       ),
-                      shadowColor: Colors.transparent,
+                      (route) => false,
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: blue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(60),
                     ),
                   ),
-                )
-              ],
-            ),
+                  child: SvgPicture.asset(
+                    "assets/images/arrow-right.svg",
+                    fit: BoxFit.none,
+                  ),
+                ),
+              )
+            ],
           ),
         ],
       ),

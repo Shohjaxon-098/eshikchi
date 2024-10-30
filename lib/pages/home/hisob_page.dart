@@ -1,10 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:muhtasham/pages/views/buyurtmalar_tarixi.dart';
-
-import '../../utils/colors.dart';
+import 'package:muhtasham/utils/important.dart';
 
 class HisobPage extends StatefulWidget {
   const HisobPage({super.key});
@@ -23,8 +18,9 @@ class _HisobPageState extends State<HisobPage> {
       firstDate: DateTime(now.year - 5),
       lastDate: DateTime(now.year + 5),
     );
-    if (picked != null &&
-        picked != DateTimeRange(start: _startDate!, end: _endDate!)) {
+
+    // Check if picked is not null before setting state
+    if (picked != null) {
       setState(() {
         _startDate = picked.start;
         _endDate = picked.end;
@@ -53,23 +49,6 @@ class _HisobPageState extends State<HisobPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // InkWell(
-                  //   onTap: () => _selectDateRange(context),
-                  //   child:
-                  //   Container(
-                  //     padding:
-                  //         EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                  //     decoration: BoxDecoration(
-                  //       border: Border.all(color: Colors.grey),
-                  //       borderRadius: BorderRadius.circular(8),
-                  //     ),
-                  //     child: Text(
-                  //       _startDate == null || _endDate == null
-                  //           ? "Select Date Range"
-                  //           : "${DateFormat('dd.MM.yyyy').format(_startDate!)} - ${DateFormat('dd.MM.yyyy').format(_endDate!)}",
-                  //     ),
-                  //   ),
-                  // ),
                   GestureDetector(
                     onTap: () => _selectDateRange(context),
                     child: Row(
@@ -194,7 +173,7 @@ class _HisobPageState extends State<HisobPage> {
                     style: GoogleFonts.onest(
                         fontWeight: FontWeight.w600,
                         fontSize: 18,
-                        color: white),
+                        color: Color(0xff344054)),
                   ),
                 ),
               ),
@@ -295,11 +274,12 @@ class _HisobPageState extends State<HisobPage> {
                             GestureDetector(
                               onTap: () {
                                 Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => BuyurtmalarTarixi(),
-                                  ),
-                                );
+                                    context,
+                                    PageTransition(
+                                        duration: Duration(milliseconds: 300),
+                                        type: PageTransitionType
+                                            .rightToLeftWithFade,
+                                        child: BuyurtmalarTarixi()));
                               },
                               child: Card(
                                 color: white,

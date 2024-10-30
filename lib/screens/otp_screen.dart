@@ -38,8 +38,6 @@ class _OtpScreenState extends State<OtpScreen> {
     });
   }
 
-
-
   @override
   void initState() {
     // TODO: implement initState
@@ -65,7 +63,7 @@ class _OtpScreenState extends State<OtpScreen> {
     }
   }
 
-  Duration time = Duration(seconds: 1);
+  Duration time = const Duration(seconds: 1);
   void _navigateToNextPage() {
     // Get the entered OTP
     String otp = _controllers.map((controller) => controller.text).join();
@@ -74,20 +72,16 @@ class _OtpScreenState extends State<OtpScreen> {
       if (otp == _correctOtp) {
         textColors = List.filled(6, Colors.green);
 
-        Future.delayed(Duration(seconds: 1), () {
+        Future.delayed(const Duration(seconds: 1), () {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => StartScreen()),
+            MaterialPageRoute(builder: (context) => const StartScreen()),
           );
         });
       } else {
         textColors = List.filled(6, Colors.red);
       }
     });
-    otp == _correctOtp
-        ? Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const StartScreen()))
-        : const AlertDialog();
   }
 
   final String _correctOtp = "111111";
@@ -121,7 +115,7 @@ class _OtpScreenState extends State<OtpScreen> {
                   top: 14,
                 ),
                 child: SvgPicture.asset(
-                  height: 38,
+                  height: 40,
                   "assets/images/logoBig_eshikchi.svg",
                 ),
               ),
@@ -162,7 +156,7 @@ class _OtpScreenState extends State<OtpScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(6, (index) {
-                return Container(
+                return SizedBox(
                   width: 45,
                   child: TextField(
                     style: GoogleFonts.onest(

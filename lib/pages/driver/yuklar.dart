@@ -1,21 +1,21 @@
-// ignore_for_file: file_names
-
 import 'package:muhtasham/utils/important.dart';
 
-class SorovlarPage extends StatefulWidget {
-  const SorovlarPage({super.key});
+class Yuklar extends StatefulWidget {
+  const Yuklar({super.key});
 
   @override
-  State<SorovlarPage> createState() => _SorovlarPageState();
+  State<Yuklar> createState() => _YuklarState();
 }
 
-class _SorovlarPageState extends State<SorovlarPage> {
+class _YuklarState extends State<Yuklar> {
   final List<Map<String, String>> items = [
-    {"title": "“XONDAMIR HOLDING” MCHJ", "date": "10.10.2024 12:00"},
-    {"title": "“Korzinka-savdo” MCHJ", "date": "10.10.2024 12:00"},
-    {"title": "“XONDAMIR HOLDING” MCHJ", "date": "10.10.2024 12:00"},
-    {"title": "“GMMOTORS-AVTO-777MOTORS” MCHJ", "date": "10.10.2024 12:00"},
-    {"title": "“XONDAMIR HOLDING” MCHJ", "date": "10.10.2024 12:00"},
+    {"title": "P-1253", "date": "15.10.2024 12:00"},
+    {"title": "P-1242", "date": "23.10.2024 12:00"},
+    {"title": "P-1294", "date": "30.10.2024 12:00"},
+    {"title": "P-1392", "date": "04.11.2024 12:00"},
+    {"title": "P-1314", "date": "10.12.2024 12:00"},
+    {"title": "P-1344", "date": "20.12.2024 12:00"},
+    {"title": "P-1324", "date": "18.12.2024 12:00"},
   ];
   @override
   Widget build(BuildContext context) {
@@ -31,11 +31,11 @@ class _SorovlarPageState extends State<SorovlarPage> {
                   PageTransition(
                       duration: Duration(milliseconds: 300),
                       type: PageTransitionType.rightToLeftWithFade,
-                      child: DetailScreen()));
+                      child: ShowYuklar()));
             },
             child: Padding(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0),
+                  const EdgeInsets.symmetric(horizontal: 12, vertical: 0.0),
               child: Card(
                 color: white,
                 shape: RoundedRectangleBorder(
@@ -48,11 +48,14 @@ class _SorovlarPageState extends State<SorovlarPage> {
                     width: 44,
                     height: 44,
                     decoration: BoxDecoration(
-                        color: const Color(0xffFFFBFA),
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: const Color(0xffFEE4E2))),
+                      color: const Color(0xffF5FAFF),
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                        color: const Color(0xffD1E9FF),
+                      ),
+                    ),
                     child: Center(
-                      child: SvgPicture.asset('assets/images/asterisk.svg'),
+                      child: SvgPicture.asset('assets/images/box1.svg'),
                     ),
                   ),
                   title: Text(
@@ -62,7 +65,7 @@ class _SorovlarPageState extends State<SorovlarPage> {
                         fontWeight: FontWeight.w500, fontSize: 14),
                   ),
                   subtitle: Text(
-                    items[index]["date"]!,
+                    "Yukni olish sanasi: ${items[index]["date"]}",
                     style: GoogleFonts.onest(
                         fontWeight: FontWeight.w500,
                         fontSize: 14,

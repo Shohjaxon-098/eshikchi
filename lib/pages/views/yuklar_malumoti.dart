@@ -1,34 +1,35 @@
 import 'package:muhtasham/utils/important.dart';
 
-class ShowBuyurtma extends StatelessWidget {
-  const ShowBuyurtma({super.key});
+class YuklarMalumoti extends StatefulWidget {
+  const YuklarMalumoti({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final List<Map<String, String>> productList = [
-      {
-        "name": "Полиуретановая матовая эмаль BP101.XX2131231232",
-        "quantity": "10 dona x 200 000 000 UZS",
-        "totall": "2 000 000 000 UZS"
-      },
-      {
-        "name": "Полиуретановая матовая эмаль BP101.XX2131231232",
-        "quantity": "10 dona x 200 000 000 UZS",
-        "totall": "2 000 000 000 UZS"
-      },
-      {
-        "name": "Полиуретановая матовая эмаль BP101.XX2131231232",
-        "quantity": "10 dona x 200 000 000 UZS",
-        "totall": "2 000 000 000 UZS"
-      },
-      {
-        "name": "Полиуретановая матовая эмаль BP101.XX2131231232",
-        "quantity": "10 dona x 200 000 000 UZS",
-        "totall": "2 000 000 000 UZS"
-      },
+  State<YuklarMalumoti> createState() => _YuklarMalumotiState();
+}
 
-      // You can add more items here if needed
-    ];
+class _YuklarMalumotiState extends State<YuklarMalumoti> {
+  final List<Map<String, String>> productList = [
+    {
+      "name": "Полиуретановая матовая эмаль BP101.XX2131231232",
+      "totall": "10 dona"
+    },
+    {
+      "name": "Полиуретановая матовая эмаль BP101.XX2131231232",
+      "totall": "15 dona"
+    },
+    {
+      "name": "Полиуретановая матовая эмаль BP101.XX2131231232",
+      "totall": "20 dona"
+    },
+    {
+      "name": "Полиуретановая матовая эмаль BP101.XX2131231232",
+      "totall": "30 dona"
+    },
+
+    // You can add more items here if needed
+  ];
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xffF9FAFB),
       body: SizedBox(
@@ -36,9 +37,9 @@ class ShowBuyurtma extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              flex: 2,
+              flex: 3,
               child: Stack(
-                alignment: const Alignment(-0.97, -0.7),
+                alignment: const Alignment(-0.96, -0.58),
                 children: [
                   Container(
                       width: double.infinity,
@@ -55,58 +56,56 @@ class ShowBuyurtma extends StatelessWidget {
                           bottomRight: Radius.circular(48),
                         ),
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: 56,
-                            height: 56,
-                            decoration: BoxDecoration(
-                              border: const Border(),
-                              color: const Color(0xffF5FAFF),
-                              borderRadius: BorderRadius.circular(40),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              width: 56,
+                              height: 56,
+                              decoration: BoxDecoration(
+                                border: const Border(),
+                                color: const Color(0xffF5FAFF),
+                                borderRadius: BorderRadius.circular(40),
+                              ),
+                              child: SvgPicture.asset(
+                                "assets/images/shopping1.svg",
+                                fit: BoxFit.none,
+                              ),
                             ),
-                            child: SvgPicture.asset(
-                              "assets/images/shopping1.svg",
-                              fit: BoxFit.none,
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 16, bottom: 12),
+                              child: Text(
+                                "BU-00023",
+                                style: GoogleFonts.onest(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16,
+                                    color: white),
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 16, bottom: 12),
-                            child: Text(
-                              "“XOVANDAMIR HOLDING” MCHJ",
+                            Text(
+                              "Mijoz: “XOVANDAMIR HOLDING” MCHJ",
                               style: GoogleFonts.onest(
-                                  fontWeight: FontWeight.w500,
+                                  fontWeight: FontWeight.w400,
                                   fontSize: 16,
-                                  color: white),
+                                  color: const Color(0xffE6EFFF)),
                             ),
-                          ),
-                          Text(
-                            "BU-00023 buyurtmaning umumiy summasi",
-                            style: GoogleFonts.onest(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 16,
-                                color: const Color(0xffE6EFFF)),
-                          ),
-                          const SizedBox(
-                            height: 4,
-                          ),
-                          Text(
-                            "81 612 000 UZS",
-                            style: GoogleFonts.onest(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 30,
-                                color: const Color(0xffF6FEF9)),
-                          ),
-                          Text(
-                            "10.01.2024 10:00",
-                            style: GoogleFonts.onest(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 16,
-                                color: const Color(0xffF6FEF9)),
-                          ),
-                        ],
+                            const SizedBox(
+                              height: 4,
+                            ),
+                            Text(
+                              textAlign: TextAlign.center,
+                              "Buyurtma manzili: Navoiy viloyati, Karmana tumani, Islom Karimov ko’chasi, 22-uy",
+                              style: GoogleFonts.onest(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 16,
+                                  color: const Color(0xffF6FEF9)),
+                            ),
+                          ],
+                        ),
                       )),
                   GestureDetector(
                     onTap: () {
@@ -121,8 +120,8 @@ class ShowBuyurtma extends StatelessWidget {
               ),
             ),
             Expanded(
-              flex: 3,
-              child: Container(
+              flex: 4,
+              child: SizedBox(
                 width: double.infinity,
                 child: ListView.builder(
                   itemCount: productList.length,
@@ -152,15 +151,16 @@ class ShowBuyurtma extends StatelessWidget {
                               ),
                               const SizedBox(height: 8),
                               Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    productList[index]["quantity"]!,
+                                    "Miqdori:",
                                     style: GoogleFonts.onest(
                                         color: const Color(0xff667085),
                                         fontWeight: FontWeight.w400,
                                         fontSize: 14),
+                                  ),
+                                  const SizedBox(
+                                    width: 8,
                                   ),
                                   Text(
                                     productList[index]["totall"]!,
@@ -180,6 +180,7 @@ class ShowBuyurtma extends StatelessWidget {
               ),
             ),
             Expanded(
+              flex: 1,
               child: Container(
                 padding: const EdgeInsets.only(top: 8, left: 16, right: 16),
                 decoration: BoxDecoration(
@@ -190,41 +191,15 @@ class ShowBuyurtma extends StatelessWidget {
                             color: Color.fromARGB(92, 175, 175, 175)))),
                 child: Column(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Yukni olish sanasi",
-                          style: GoogleFonts.onest(
-                            color: const Color(0xff667085),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        Text(
-                          "10.01.2024",
-                          style: GoogleFonts.onest(
-                            color: const Color(0xff101828),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const SuccsessBuyurtma(),
-                            ),
-                          );
-                          // Handle button action
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const SuccsessYuklar(),
+                              ));
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: blue, // Background color

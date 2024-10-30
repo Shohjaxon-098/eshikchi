@@ -1,34 +1,34 @@
 
 import 'package:muhtasham/utils/important.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class LoadPage extends StatefulWidget {
+  const LoadPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<LoadPage> createState() => _LoadPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _LoadPageState extends State<LoadPage> {
   var _currentIndex = 0;
 
   final List<Widget> _titles = [
     Text(
-      'So\'rovlar',
+      'Yuklar',
       style: GoogleFonts.onest(fontSize: 16, fontWeight: FontWeight.w600),
     ),
     Text(
-      'Buyurtmalar',
+      'Jarayondagi yuklar',
       style: GoogleFonts.onest(fontSize: 16, fontWeight: FontWeight.w600),
     ),
     Text(
-      'Hisob-kitob',
+      'Tarix',
       style: GoogleFonts.onest(fontSize: 16, fontWeight: FontWeight.w600),
     ),
   ];
   final List<Widget> _pages = [
-    const SorovlarPage(),
-    const BuyurtmalarPage(),
-    const HisobPage(),
+    Yuklar(),
+    JarayondagiYuklar(),
+    TarixPage(),
   ];
 
   void _onTabTapped(int index) {
@@ -42,9 +42,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xffF9FAFB),
       appBar: AppBar(
-        backgroundColor: white,
-        centerTitle: true,
         leading: PopupMenuButton<String>(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
@@ -237,7 +236,15 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               PopupMenuItem(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomePage(),
+                    ),
+                    (route) => false,
+                  );
+                },
                 value: 'user',
                 child: Row(
                   children: [
@@ -255,15 +262,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               PopupMenuItem(
-                onTap: () {
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => LoadPage(),
-                    ),
-                    (route) => false,
-                  );
-                },
+                onTap: () {},
                 value: "truck",
                 child: Row(
                   children: [
@@ -288,6 +287,8 @@ class _HomePageState extends State<HomePage> {
           ),
           onSelected: (value) {},
         ),
+        backgroundColor: white,
+        centerTitle: true,
         elevation: 0,
         title: _titles[_currentIndex],
       ),
@@ -300,30 +301,36 @@ class _HomePageState extends State<HomePage> {
         unselectedFontSize: 12,
         items: [
           BottomNavigationBarItem(
-            icon: SvgPicture.asset("assets/images/Icon2.svg"),
-            activeIcon: SvgPicture.asset("assets/images/Icon1.svg"),
-            label: 'So\'rovlar',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset("assets/images/shopping2.svg"),
+            icon: SvgPicture.asset("assets/images/box2.svg"),
             activeIcon: SvgPicture.asset(
-              "assets/images/shopping1.svg",
+              "assets/images/box1.svg",
+              width: 30,
+              height: 30,
             ),
-            label: 'Buyurtmalar',
+            label: 'Yuklar',
           ),
           BottomNavigationBarItem(
-            icon: SvgPicture.asset("assets/images/money2.svg"),
-            activeIcon: SvgPicture.asset("assets/images/money1.svg"),
-            label: 'Hisob-kitob',
+            icon: SvgPicture.asset("assets/images/truck1.svg"),
+            activeIcon: SvgPicture.asset(
+              "assets/images/truck2.svg",
+              width: 30,
+              height: 30,
+            ),
+            label: 'Jarayondagi yuklar',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              "assets/images/tarix2.svg",
+              width: 30,
+              height: 30,
+            ),
+            activeIcon: SvgPicture.asset(
+              "assets/images/tarix1.svg",
+            ),
+            label: 'Tarix',
           ),
         ],
-        selectedItemColor: _currentIndex == 0
-            ? Colors.red
-            : _currentIndex == 1
-                ? Colors.blue
-                : _currentIndex == 2
-                    ? Colors.green
-                    : Colors.black,
+        selectedItemColor: blue,
         unselectedItemColor: Colors.black,
       ),
     );
