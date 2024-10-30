@@ -1,50 +1,10 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'dart:async';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:muhtasham/screens/start_screen.dart';
-import 'package:muhtasham/screens/phone_screen.dart';
-import 'package:muhtasham/utils/colors.dart';
-
-// class Otp extends StatelessWidget {
-//   const Otp({super.key, required this.otpController, required this.onChanged});
-//   final void Function(String)? onChanged;
-//   final TextEditingController otpController;
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       width: 40,
-//       height: 40,
-//       child: TextField(
-//         controller: otpController,
-//         keyboardType: TextInputType.number,
-//         style: GoogleFonts.onest(
-//             fontSize: 30, fontWeight: FontWeight.w600, color: Colors.black),
-//         textAlign: TextAlign.center,
-//         inputFormatters: [
-//           LengthLimitingTextInputFormatter(1),
-//         ],
-//         onChanged: onChanged,
-//         showCursor: true,
-//         decoration: InputDecoration(
-//           border: InputBorder.none,
-//           hintText: ('●'),
-//           hintStyle: TextStyle(
-//             fontSize: 16,
-//             color: Color(0xffD0D5DD),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
+import 'package:muhtasham/utils/important.dart';
 
 // ignore: must_be_immutable
 class OtpScreen extends StatefulWidget {
-  // ignore: non_constant_identifier_names
   OtpScreen({super.key, required this.phone_number});
   TextEditingController phone_number = TextEditingController();
   @override
@@ -105,13 +65,21 @@ class _OtpScreenState extends State<OtpScreen> {
     }
   }
 
+  Duration time = Duration(seconds: 1);
   void _navigateToNextPage() {
     // Get the entered OTP
     String otp = _controllers.map((controller) => controller.text).join();
     // You can use the OTP for validation or send it to the next page.
     setState(() {
       if (otp == _correctOtp) {
-        textColors = List.filled(6, Colors.black);
+        textColors = List.filled(6, Colors.green);
+
+        Future.delayed(Duration(seconds: 1), () {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => StartScreen()),
+          );
+        });
       } else {
         textColors = List.filled(6, Colors.red);
       }

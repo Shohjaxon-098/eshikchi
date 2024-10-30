@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:muhtasham/pages/home/home_page.dart';
 import 'package:muhtasham/screens/language_screen.dart';
 
 void main() {

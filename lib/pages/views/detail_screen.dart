@@ -163,43 +163,46 @@ class _DetailScreenState extends State<DetailScreen> {
                                             fontSize: 14),
                                       ),
                                       SizedBox(
-                                        width: 5,
-                                      ),
-                                      PopupMenuButton(
-                                        onSelected: (value) {
-                                          setState(() {
-                                            title = value;
-                                          });
-                                        },
-                                        color: white,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(12),
+                                        width: 40,
+                                        height: 40,
+                                        child: PopupMenuButton(
+                                          onSelected: (value) {
+                                            setState(() {
+                                              title = value;
+                                            });
+                                          },
+                                          color: white,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(12),
+                                          ),
+                                          icon: SvgPicture.asset(
+                                              "assets/images/chevron-down.svg"),
+                                          itemBuilder: (context) {
+                                            return [
+                                              PopupMenuItem(
+                                                value: uzs,
+                                                child: Text(
+                                                  uzs,
+                                                  style: GoogleFonts.onest(
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontSize: 14),
+                                                ),
+                                              ),
+                                              PopupMenuItem(
+                                                value: usd,
+                                                child: Text(
+                                                  usd,
+                                                  style: GoogleFonts.onest(
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontSize: 14),
+                                                ),
+                                              ),
+                                            ];
+                                          },
                                         ),
-                                        icon: SvgPicture.asset(
-                                            "assets/images/chevron-down.svg"),
-                                        itemBuilder: (context) {
-                                          return [
-                                            PopupMenuItem(
-                                              value: uzs,
-                                              child: Text(
-                                                uzs,
-                                                style: GoogleFonts.onest(
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize: 14),
-                                              ),
-                                            ),
-                                            PopupMenuItem(
-                                              value: usd,
-                                              child: Text(
-                                                usd,
-                                                style: GoogleFonts.onest(
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize: 14),
-                                              ),
-                                            ),
-                                          ];
-                                        },
                                       ),
                                     ],
                                   ),

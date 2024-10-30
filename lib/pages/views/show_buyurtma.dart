@@ -1,9 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:muhtasham/pages/views/succsess_buyurtma.dart';
 
-import '../../utils/colors.dart';
+
+import 'package:muhtasham/utils/important.dart';
 
 class ShowBuyurtma extends StatelessWidget {
   const ShowBuyurtma({super.key});
@@ -43,7 +40,7 @@ class ShowBuyurtma extends StatelessWidget {
             Expanded(
               flex: 2,
               child: Stack(
-                alignment: Alignment(-0.97, -0.7),
+                alignment: const Alignment(-0.97, -0.7),
                 children: [
                   Container(
                       width: double.infinity,
@@ -188,79 +185,72 @@ class ShowBuyurtma extends StatelessWidget {
                       },
                     ),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: white,
-                        border: const Border.symmetric(
-                            horizontal: BorderSide(
-                                width: 0.7,
-                                color: Color.fromARGB(92, 175, 175, 175)))),
-                    height: 136,
-                    child: Column(
+            ),
+            Expanded(
+              child: Container(
+                padding: const EdgeInsets.only(top: 8, left: 16, right: 16),
+                decoration: BoxDecoration(
+                    color: white,
+                    border: const Border.symmetric(
+                        horizontal: BorderSide(
+                            width: 0.7,
+                            color: Color.fromARGB(92, 175, 175, 175)))),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 8),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Yukni olish sanasi",
-                                style: GoogleFonts.onest(
-                                  color: const Color(0xff667085),
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              Text(
-                                "10.01.2024",
-                                style: GoogleFonts.onest(
-                                  color: const Color(0xff101828),
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ],
+                        Text(
+                          "Yukni olish sanasi",
+                          style: GoogleFonts.onest(
+                            color: const Color(0xff667085),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              bottom: 28, top: 8, left: 16, right: 16),
-                          child: SizedBox(
-                            width: double.infinity,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        const SuccsessBuyurtma(),
-                                  ),
-                                );
-                                // Handle button action
-                              },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: blue, // Background color
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(16),
-                                ),
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 16.0),
-                              ),
-                              child: Text(
-                                "Tasdiqlash",
-                                style: GoogleFonts.onest(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 18,
-                                    color: white),
-                              ),
-                            ),
+                        Text(
+                          "10.01.2024",
+                          style: GoogleFonts.onest(
+                            color: const Color(0xff101828),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
                           ),
                         ),
                       ],
                     ),
-                  ),
-                ],
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const SuccsessBuyurtma(),
+                            ),
+                          );
+                          // Handle button action
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: blue, // Background color
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          padding: const EdgeInsets.symmetric(vertical: 16.0),
+                        ),
+                        child: Text(
+                          "Tasdiqlash",
+                          style: GoogleFonts.onest(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                              color: white),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
